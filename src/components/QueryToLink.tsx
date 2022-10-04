@@ -69,7 +69,12 @@ const QueryToLink = () => {
               Copy Link
             </button>
           </div>
-          <a href={link} className="px-4 py-2 bg-purple-500 text-white rounded">
+          <a
+            href={link}
+            target="_blank"
+            className="px-4 py-2 bg-purple-500 text-white rounded"
+            rel="noreferrer"
+          >
             Open Link
           </a>
         </div>
