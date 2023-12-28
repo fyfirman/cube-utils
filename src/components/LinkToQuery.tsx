@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const LinkToQuery = () => {
   const [query, setQuery] = useState("");
+  const [removeOrder, setRemoveOrder] = useState(true);
 
   const handleLinkChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const link = e.target.value;
@@ -16,6 +17,10 @@ const LinkToQuery = () => {
     const json = {
       query: JSON.parse(query),
     };
+
+    if(removeOrder){
+      delete json.query.order
+    }
 
     setQuery(JSON.stringify(json));
   };
