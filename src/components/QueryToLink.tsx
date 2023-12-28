@@ -5,6 +5,8 @@ const QueryToLink = () => {
   const [baseURL, setBaseURL] = useState("");
   const [singleLineQUery, setSingleLineQuery] = useState("");
   const [error, setError] = useState("");
+  const [removeUnusedKey, setRemoveUnusedKey] = useState(true);
+
 
   const link = `${
     !!baseURL ? baseURL : "http://localhost:4000"
@@ -22,6 +24,13 @@ const QueryToLink = () => {
     if (!json.query) {
       setError("Invalid query");
       return;
+    }
+
+    if(removeUnusedKey){
+      delete json.query.order
+      delete json.query.timeDimensions
+      delete json.query.timezone
+      delete json.query.total
     }
 
     setSingleLineQuery(convertQueryToSingeLine(json.query));
